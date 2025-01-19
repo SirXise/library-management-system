@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reports</title>
+    <link rel="stylesheet" th:href="@{/css/homestyle.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+    <style>
+        /* CSS to float the form to the left */
+        .form-container {
+            float: left;
+            margin-right: 20px; /* Optional: Add some space between the form and the table */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Library Management System</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/books">Books</a> |
+        <a href="/borrowings">Borrowings</a> |
+        <a href="/members">Members</a> |
+        <a href="/reports">Reports</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Reports</h2>
+
+    <!-- Form to generate overdue report -->
+    <div class="form-container">
+        <form th:action="@{/reports/generate-overdue}" method="post">
+            <button type="submit">Generate Overdue Report</button>
+        </form>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Report ID</th>
+            <th>Report Type</th>
+            <th>Parameters</th>
+            <th>Generation Date</th>
+            <th>Overdue Count</th>
+            <th>Actions</th>
+        </tr>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="report : ${reports}">
+            <td th:text="${report.id}"></td>
+            <td th:text="${report.reportType}"></td>
+            <td th:text="${report.parameters}"></td>
+            <td th:text="${report.generationDate}"></td>
+            <td th:text="${report.overdueCount}"></td>
+            <td>
+                <a th:href="@{/reports/view/{id}(id=${report.id})}">View</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

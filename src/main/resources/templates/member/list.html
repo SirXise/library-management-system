@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Members</title>
+  <link rel="stylesheet" th:href="@{/css/homestyle.css}" />
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+  <h1>Library Management System</h1>
+  <nav>
+    <a href="/">Home</a> |
+    <a href="/books">Books</a> |
+    <a href="/borrowings">Borrowings</a> |
+    <a href="/members">Members</a> |
+    <a href="/reports">Reports</a>
+  </nav>
+</header>
+<div class="container">
+  <h2>Members</h2>
+  <a href="/members/new" class="button">Add New Member</a>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="member : ${members}">
+      <td th:text="${member.name}"></td>
+      <td th:text="${member.address}"></td>
+      <td th:text="${member.phoneNumber}"></td>
+      <td th:text="${member.email}"></td>
+      <td>
+        <a th:href="@{/members/edit/{id}(id=${member.id})}">Edit</a> |
+        <a th:href="@{/members/delete/{id}(id=${member.id})}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

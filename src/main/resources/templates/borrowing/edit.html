@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Borrowing Form</title>
+  <link rel="stylesheet" th:href="@{/css/homestyle.css}" />
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+  <h1>Library Management System</h1>
+  <nav>
+    <a href="/">Home</a> |
+    <a href="/books">Books</a> |
+    <a href="/borrowings">Borrowings</a> |
+    <a href="/members">Members</a> |
+    <a href="/reports">Reports</a>
+  </nav>
+</header>
+<div class="container">
+  <h2>Edit Borrowing</h2>
+  <form th:action="@{/borrowings/update}" th:object="${borrowing}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <!-- Member Dropdown -->
+    <label for="memberId">Member:</label>
+    <select id="memberId" th:field="*{memberId}" required>
+      <option th:each="member : ${members}"
+              th:value="${member.id}"
+              th:text="${member.name}"
+              th:selected="${borrowing.memberId == member.id}"></option>
+    </select>
+
+    <!-- Book Dropdown -->
+    <label for="bookId">Book:</label>
+    <select id="bookId" th:field="*{bookId}" required>
+      <option th:each="book : ${books}"
+              th:value="${book.id}"
+              th:text="${book.title}"
+              th:selected="${borrowing.bookId == book.id}"></option>
+    </select>
+
+    <label for="issueDate">Issue Date:</label>
+    <input type="date" id="issueDate" th:field="*{issueDate}" required />
+
+    <label for="dueDate">Due Date:</label>
+    <input type="date" id="dueDate" th:field="*{dueDate}" required />
+
+    <label for="returnDate">Return Date:</label>
+    <input type="date" id="returnDate" th:field="*{returnDate}" />
+
+    <button type="submit">Save</button>
+  </form>
+</div>
+</body>
+</html>

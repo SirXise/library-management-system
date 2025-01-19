@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Books</title>
+    <link rel="stylesheet" th:href="@{/css/homestyle.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<header>
+    <h1>Library Management System</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/books">Books</a> |
+        <a href="/borrowings">Borrowings</a> |
+        <a href="/members">Members</a> |
+        <a href="/reports">Reports</a>
+    </nav>
+</header>
+<div class="container">
+    <h2>Books</h2>
+    <a href="/books/new" class="button">Add New Book</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>ISBN</th>
+            <th>Edition</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book : ${books}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.publisher}"></td>
+            <td th:text="${book.isbn}"></td>
+            <td th:text="${book.edition}"></td>
+            <td th:text="${book.quantity}"></td>
+            <td>
+                <span class="action-links">
+                    <a th:href="@{/books/edit/{id}(id=${book.id})}">Edit</a> |
+                    <a th:href="@{/books/delete/{id}(id=${book.id})}">Delete</a>
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

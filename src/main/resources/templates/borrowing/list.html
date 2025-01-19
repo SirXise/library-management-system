@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Borrowings</title>
+  <link rel="stylesheet" th:href="@{/css/homestyle.css}" />
+  <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+  <h1>Library Management System</h1>
+  <nav>
+    <a href="/">Home</a> |
+    <a href="/books">Books</a> |
+    <a href="/borrowings">Borrowings</a> |
+    <a href="/members">Members</a> |
+    <a href="/reports">Reports</a>
+  </nav>
+</header>
+<div class="container">
+  <h2>Borrowings</h2>
+  <a href="/borrowings/new" class="button">Add New Borrowing</a>
+  <table>
+    <thead>
+    <tr>
+      <th>Member ID</th>
+      <th>Book ID</th>
+      <th>Issue Date</th>
+      <th>Due Date</th>
+      <th>Return Date</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="borrowing : ${borrowings}">
+      <td th:text="${borrowing.memberName}"></td>
+      <td th:text="${borrowing.bookTitle}"></td>
+      <td th:text="${borrowing.formattedIssueDate}"></td>
+      <td th:text="${borrowing.formattedDueDate}"></td>
+      <td th:text="${borrowing.formattedReturnDate}"></td>
+      <td>
+        <a th:href="@{/borrowings/edit/{id}(id=${borrowing.id})}">Edit</a> |
+        <a th:href="@{/borrowings/delete/{id}(id=${borrowing.id})}">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

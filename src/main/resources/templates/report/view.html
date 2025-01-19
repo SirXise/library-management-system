@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Report Details</title>
+    <link rel="stylesheet" th:href="@{/css/homestyle.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+<header>
+    <h1>Library Management System</h1>
+    <nav>
+        <a href="/">Home</a> |
+        <a href="/books">Books</a> |
+        <a href="/borrowings">Borrowings</a> |
+        <a href="/members">Members</a> |
+        <a href="/reports">Reports</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Report Details</h2>
+
+    <table>
+        <tr>
+            <th>Report ID:</th>
+            <td th:text="${report.id}"></td>
+        </tr>
+        <tr>
+            <th>Report Type:</th>
+            <td th:text="${report.reportType}"></td>
+        </tr>
+        <tr>
+            <th>Parameters:</th>
+            <td th:text="${report.parameters}"></td>
+        </tr>
+        <tr>
+            <th>Generation Date:</th>
+            <td th:text="${report.generationDate}"></td>
+        </tr>
+        <tr>
+            <th>Overdue Count:</th>
+            <td th:text="${report.overdueCount}"></td>
+        </tr>
+    </table>
+
+    <h3>Overdue Borrowings</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Member</th>
+            <th>Book</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="borrowing : ${overdueBorrowings}">
+            <td th:text="${borrowing.memberName}"></td>
+            <td th:text="${borrowing.bookTitle}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/reports">Back to Reports List</a>
+</div>
+</body>
+</html>

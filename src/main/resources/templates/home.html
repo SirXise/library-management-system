@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Library Management System - Home</title>
+  <link rel="stylesheet" th:href="@{/css/homestyle.css}" />
+</head>
+<body>
+<header>
+  <h1>Library Management System</h1>
+  <nav>
+    <a href="/">Home</a> |
+    <a href="/books">Books</a> |
+    <a href="/borrowings">Borrowings</a> |
+    <a href="/members">Members</a> |
+    <a href="/reports">Reports</a>
+  </nav>
+</header>
+<div class="container">
+  <h2>Welcome to the Library Management System</h2>
+  <p>This system helps you manage books, borrowings, members, and reports efficiently.</p>
+  <div class="card-container">
+    <div class="card">
+      <h3>Books</h3>
+      <p>Manage all the books in the library collection.</p>
+      <a href="/books" class="button">View Books</a>
+    </div>
+    <div class="card">
+      <h3>Borrowings</h3>
+      <p>Track borrowing records and due dates.</p>
+      <a href="/borrowings" class="button">View Borrowings</a>
+    </div>
+    <div class="card">
+      <h3>Members</h3>
+      <p>Manage member information and contacts.</p>
+      <a href="/members" class="button">View Members</a>
+    </div>
+    <div class="card">
+      <h3>Reports</h3>
+      <p>Generate and view reports about library activities.</p>
+      <a href="/reports" class="button">View Reports</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <p>&copy; 2025 Library Management System. All rights reserved.</p>
+</footer>
+</body>
+</html>
