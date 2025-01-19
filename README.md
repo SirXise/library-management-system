@@ -27,12 +27,12 @@ The Library Management System (LMS) is a web-based application designed to simpl
 
 - **Member Management**
     - Register new members.
-    - Edit member details.
-    - View member borrowing history.
+    - Edit and delete existing member details.
+    - View member details.
 
 - **Borrowing Management**
     - Record book borrowings and returns.
-    - Automatically calculate overdue items based on due dates.
+    - Edit and delete existing borrowing details
 
 - **Report Generation**
     - Generate overdue reports.
